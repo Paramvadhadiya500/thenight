@@ -40,14 +40,19 @@ export default function ModelViewer({ model3D, modelAR }: ModelViewerProps) {
         ios-src={iosSrc}
         alt="A 3D model of the menu item"
         ar
+        // WE KEPT WEBXR FIRST FOR INSTANT LOADING!
         ar-modes="webxr scene-viewer quick-look"
-        ar-scale="auto"
+        // FIX 1: Locks the 3D model in place so you can walk 360 degrees around it without it moving
+        ar-scale="fixed"
         ar-placement="floor"
-        environment-image="neutral" // CRITICAL: prevents the "black model" WebGL bug
+        // FIX 2: Makes the food exactly twice as big instantly. (Change to "3 3 3" if still too small)
+        scale="2 2 2"
+        environment-image="neutral"
         camera-controls
         auto-rotate
         shadow-intensity="1"
-        interaction-prompt="auto"
+        // FIX 3: Removes the invisible tutorial layer so your touches work on the FIRST try
+        interaction-prompt="none"
         style={{ width: "100%", height: "100%", backgroundColor: "transparent" }}
       >
         {isMobile && (
@@ -61,8 +66,8 @@ export default function ModelViewer({ model3D, modelAR }: ModelViewerProps) {
       </model-viewer>
       
       {/* Subtle Toast overlay for gesture instructions */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md text-white/90 text-xs px-4 py-2 rounded-full pointer-events-none tracking-wide">
-        Drag to move • Pinch to scale
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md text-white/90 text-xs px-4 py-2 rounded-full pointer-events-none tracking-wide whitespace-nowrap z-10">
+        1 Finger Move • 2 Fingers Zoom & Rotate
       </div>
     </div>
   );
