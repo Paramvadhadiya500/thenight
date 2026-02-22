@@ -30,7 +30,7 @@ export const categories: Category[] = [
     id: "cat-1",
     name: "Italian",
     slug: "italian",
-    thumbnail: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771690737/123_efqrhk.jpg",
+    thumbnail: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771783455/wtf_syqmh7.glb",
     description: "Authentic wood-fired classics and handmade pastas.",
     items: [
       {
