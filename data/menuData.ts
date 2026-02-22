@@ -30,7 +30,7 @@ export const categories: Category[] = [
     id: "cat-1",
     name: "Italian",
     slug: "italian",
-    thumbnail: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771783455/wtf_syqmh7.glb",
+    thumbnail: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771690737/123_efqrhk.jpg",
     description: "Authentic wood-fired classics and handmade pastas.",
     items: [
       {
@@ -41,7 +41,7 @@ export const categories: Category[] = [
         currency: "₹",
         description: "Creamy Arborio rice with wild mushrooms, finished with white truffle oil and parmesan tuile.",
         image: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771690737/123_efqrhk.jpg",
-        model3D: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771782664/145236_h9lql2.glb", // We will use this in Phase 3
+        model3D: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771783455/wtf_syqmh7.glb", // We will use this in Phase 3
         ingredients: ["Arborio Rice", "Wild Mushrooms", "Truffle Oil", "Parmesan"],
         isVeg: true,
         isSpicy: false,
