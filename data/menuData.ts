@@ -41,7 +41,7 @@ export const categories: Category[] = [
         currency: "₹",
         description: "Creamy Arborio rice with wild mushrooms, finished with white truffle oil and parmesan tuile.",
         image: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771690737/123_efqrhk.jpg",
-        model3D: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1769104384/output_ha2s3x.glb", // We will use this in Phase 3
+        model3D: "https://res.cloudinary.com/dlnn95ku7/image/upload/v1771782664/145236_h9lql2.glb", // We will use this in Phase 3
         ingredients: ["Arborio Rice", "Wild Mushrooms", "Truffle Oil", "Parmesan"],
         isVeg: true,
         isSpicy: false,
