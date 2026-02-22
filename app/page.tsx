@@ -3,7 +3,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function SplashIntro() {
@@ -12,7 +11,7 @@ export default function SplashIntro() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Show the Lottie preloader for exactly 2.5 seconds
+    // Show the custom loader for exactly 2.5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
@@ -37,13 +36,17 @@ export default function SplashIntro() {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center justify-center z-20"
           >
-            {/* Lottie Spinner - using a clean, minimal loading animation */}
-            <Player
-              autoplay
-              loop
-              src="https://lottie.host/8c64137c-473f-42b7-9fa4-1e053a473215/MkVX1U6j50.json" 
-              style={{ height: '120px', width: '120px' }}
+            {/* Custom Premium Framer Motion Spinner replacing Lottie */}
+            <motion.div
+              className="w-16 h-16 border-[3px] border-primary/20 border-t-primary rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "linear",
+              }}
             />
+            
             <motion.h1 
               className="font-playfair text-3xl text-primary mt-6 tracking-[0.2em] uppercase font-medium"
               initial={{ y: 10, opacity: 0 }}
@@ -61,9 +64,6 @@ export default function SplashIntro() {
             transition={{ duration: 1.2 }}
             className="absolute inset-0 z-10"
           >
-            {/* playsInline is crucial for iOS so it doesn't open the native video player.
-              We keep it muted to allow autoplay on modern browsers.
-            */}
             <video
               ref={videoRef}
               autoPlay
