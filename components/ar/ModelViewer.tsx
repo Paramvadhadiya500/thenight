@@ -14,18 +14,15 @@ export default function ModelViewer({ model3D, modelAR }: ModelViewerProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // 1. Dynamically import model-viewer to prevent SSR hydration crashes
     import("@google/model-viewer").catch(console.error);
     setIsMounted(true);
 
-    // 2. Detect mobile device to selectively show the AR button
     const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
     if (/android|ipad|iphone|ipod/i.test(userAgent.toLowerCase())) {
       setIsMobile(true);
     }
   }, []);
 
-  // Show a premium dark skeleton loader while the component mounts
   if (!isMounted) {
     return <div className="w-full h-full min-h-[50vh] bg-card animate-pulse rounded-xl" />;
   }
@@ -40,18 +37,15 @@ export default function ModelViewer({ model3D, modelAR }: ModelViewerProps) {
         ios-src={iosSrc}
         alt="A 3D model of the menu item"
         ar
-        // WE KEPT WEBXR FIRST FOR INSTANT LOADING!
         ar-modes="webxr scene-viewer quick-look"
-        // FIX 1: Locks the 3D model in place so you can walk 360 degrees around it without it moving
-        ar-scale="fixed"
+        // FIX 1: Back to "auto". This allows the user to pinch-to-zoom again!
+        ar-scale="auto"
+        // FIX 2: Removed the artificial scale="2 2 2" so it doesn't suddenly jump in size.
         ar-placement="floor"
-        // FIX 2: Makes the food exactly twice as big instantly. (Change to "3 3 3" if still too small)
-        scale="2 2 2"
         environment-image="neutral"
         camera-controls
         auto-rotate
         shadow-intensity="1"
-        // FIX 3: Removes the invisible tutorial layer so your touches work on the FIRST try
         interaction-prompt="none"
         style={{ width: "100%", height: "100%", backgroundColor: "transparent" }}
       >
@@ -65,7 +59,6 @@ export default function ModelViewer({ model3D, modelAR }: ModelViewerProps) {
         )}
       </model-viewer>
       
-      {/* Subtle Toast overlay for gesture instructions */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md text-white/90 text-xs px-4 py-2 rounded-full pointer-events-none tracking-wide whitespace-nowrap z-10">
         1 Finger Move • 2 Fingers Zoom & Rotate
       </div>
